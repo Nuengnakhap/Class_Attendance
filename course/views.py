@@ -32,14 +32,3 @@ def course_id(request, course_id):
             courseTmp = x
             break
     return JsonResponse(courseTmp, safe=False)
-
-
-def edit(request, course_id):
-    if request.method == 'PUT':
-        for x in course:
-            if x["id"] == course_id:
-                body_unicode = request.body.decode('utf-8')
-                body = json.loads(body_unicode)
-                x = {**body, **{"id": course_id}}
-                break
-    return JsonResponse(course, safe=False)
